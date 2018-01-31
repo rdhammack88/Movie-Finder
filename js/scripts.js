@@ -1,13 +1,12 @@
 $(document).ready(function() {
 	$('#searchForm').on('submit', function(e) {
 		var searchText = $('#searchText').val();
-		getMovies(searchText)
-		sessionStorage.setItem('searchQuery', searchText);
+		getMovies(searchText);
 		e.preventDefault();
 	});
 	
-//	var searchQuery = sessionStorage.getItem('searchQuery');
-//	console.log(searchQuery);
+	var searchQuery = sessionStorage.getItem('searchQuery');
+	console.log(searchQuery);
 });
 
 function getMovies(searchText) {
@@ -20,8 +19,15 @@ function getMovies(searchText) {
 			var output = '';
 			$.each(movies, function(index, movie) {
 				var movieID = movie.imdbID.toString();
-				output += '<div class="col-md-3"><div class="well text-center"><img src="' + movie.Poster + '"><h5>' + movie.Title + '</h5><a onclick="movieSelected(\'' + movieID + '\')" class="btn btn-primary" href="#">Movie Details</a></div></div>';
-				console.log(movie.Poster);
+				if(movie.Poster !== "N/A") {
+					output += '<div class="col-md-4';
+					if(index >= 1) {
+//						output += ' order-md-4';
+					}					
+					output += '"><div class="well text-center"><img src="' + movie.Poster + '"><div class="details"><h5>' + movie.Title + '</h5><p class="details-btn"><a onclick="movieSelected(\'' + movieID + '\')" class="btn btn-primary" href="#">Movie Details</a></p></div></div></div>';
+//					console.log(movie.Poster);
+					console.log(index);
+				} //<p class="text-center genre">' + movie.Type + '</p>
 			});
 			$('#movies').html(output);
 		}
@@ -30,7 +36,9 @@ function getMovies(searchText) {
 
 
 function movieSelected(id) {
+	var searchText = $('#searchText').val();
 	sessionStorage.setItem('movieId', id);
+	sessionStorage.setItem('searchQuery', searchText);
 	window.location = 'movie.html';
 	return false;
 }
@@ -78,6 +86,7 @@ function getMovie() {
 			output += '</li>';
 			output += '</ul></div></div>';
 			output += '<div class="row">';
+			output += '<div class="col-sm-12">';
 			output += '<div class="well">';
 			output += '<h3>Plot</h3>';
 			output += movie.Plot;
@@ -86,7 +95,7 @@ function getMovie() {
 			output += movie.imdbID;
 			output += '" target="_blank" class="btn btn-primary">View IMDB</a>';
 			output += '<a href="index.html" class="btn btn-default">Go Back to Search</a>';
-			output += '</div>';
+			output += '</div></div></div>';
 			$('#movie').html(output);
 		}
 	});
