@@ -17,7 +17,7 @@
 	border: 1px solid #999;
 	border-radius: 10px;
 	box-sizing: content-box;
-	padding-bottom: 15px;
+	padding-bottom: 25px;
 	background-color: rgba(44, 44, 44, .6);
 }
 
@@ -28,18 +28,20 @@
 #movie img,
 #movies img {
 	width: 100%;
-	height: 83%;
+	height: 88%;
 }
 
 #movies div.details {
-	height: 17%;
+	height: 12%;
+	margin-bottom: 50px;
 }
 
 #movies h5 {
 	height: 90%;
 	padding: 15px 5px 0px;
-	margin: 0 0 10px;
+	margin: 0;
 	font-size: 1.1rem;
+	box-sizing: content-box;
 }
 
 #movies p.details-btn {
