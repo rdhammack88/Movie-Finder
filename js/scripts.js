@@ -86,7 +86,7 @@ function getMovie() {
 			output += '</li>';
 			output += '</ul></div></div>';
 			output += '<div class="row">';
-			output += '<div class="col-sm-12">';
+			output += '<div class="col-sm-6 offset-mdd-2">';
 			output += '<div class="well">';
 			output += '<h3>Plot</h3>';
 			output += movie.Plot;
