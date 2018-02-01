@@ -20,7 +20,7 @@ function getMovies(searchText) {
 			$.each(movies, function(index, movie) {
 				var movieID = movie.imdbID.toString();
 				if(movie.Poster !== "N/A") {
-					output += '<div class="col-md-4';
+					output += '<div class="col-md-4 col-lg-3 col-sm-6 offset-sm-3';
 					if(index >= 1) {
 //						output += ' order-md-4';
 					}					
@@ -52,10 +52,16 @@ function getMovie() {
 		success: function(res) {
 			console.log(res);
 			var movie = res;
-			var output = '<div class="row"><div class="col-md-4"><img src="';
+			var movieType = movie.Type[0].toUpperCase() + movie.Type.substr(1);
+			console.log(movieType);
+			var output = '<div class="row">'; //  class="col-xs-8 offset-xs-4" push-xs-2
+			
+			output += '<div class="col-xs-8 col-md-4"><h2>';//</div><div class="row">
+			output += movie.Title;
+			output += '</h2><img src="';
 			output += movie.Poster;
 			output += '" class="thumbnail"></div><div class="col-md-8"><h2> ';
-			output += movie.Title;
+//			output += movie.Title;
 			output += '</h2><ul class="list-group">';
 			output += '<li class="list-group-item"><strong>Genre:</strong> ';
 			output += movie.Genre;
@@ -67,7 +73,7 @@ function getMovie() {
 			output += movie.Rated;
 		    output += '</li>';
 			output += '<li class="list-group-item"><strong>Media type:</strong> ';
-			output += movie.Type;
+			output += movieType;
 		    output += '</li>';
 			output += '<li class="list-group-item"><strong>Runtime:</strong> ';
 			output += movie.Runtime;

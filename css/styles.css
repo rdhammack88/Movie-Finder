@@ -74,7 +74,8 @@
 }
 
 #movie img {
-	height: 442px;
+/*	height: 442px;*/
+	width: 100%;
 }
 
 #movie ul li {
@@ -119,11 +120,15 @@
 	}
 	
 	#movie .col-md-4 {
-		padding-top: 47px;
+/*		padding-top: 47px;*/
 	}
 	
 	#movie img {
 /*		height: 443px;*/
+	}
+	
+	#movie .col-md-8 {
+		padding-top: 38px;
 	}
 	
 }
